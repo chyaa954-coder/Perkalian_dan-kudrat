@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabel Perkalian dan Kuadrat</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #edf4ff;
+  color: #26344a;
+}
+
+header {
+  background: linear-gradient(135deg, #174ea6, #438cf0);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  margin: 0 0 8px;
+}
+
+header p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.card {
+  max-width: 650px;
+  margin: auto;
+  padding: 22px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #00000012;
+}
+
+h2 {
+  color: #2672c9;
+  font-size: 20px;
+}
+
+.deskripsi {
+  line-height: 1.6;
+  color: #64748b;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  margin: 18px 0 8px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccd8e8;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #2672c9;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #174ea6;
+}
+
+#hasil {
+  margin-top: 20px;
+  padding: 12px;
+  background: #f2f7ff;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 350px;
+}
+
+th, td {
+  border: 1px solid #d4e0f0;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 13px;
+}
+
+th {
+  background: #dceaff;
+  color: #174ea6;
+}
+
+footer {
+  text-align: center;
+  margin-top: 25px;
+  color: #718096;
+  font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Latihan JavaScript</h1>
+  <p>Perulangan For • Perkalian & Kuadrat</p>
+</header>
+
+<div class="card">
+
+  <h2>Soal 1: Tabel Perkalian & Kuadrat (for)</h2>
+
+  <p class="deskripsi">
+    Diberikan bilangan bulat positif N.
+    Gunakan struktur for untuk mencetak tabel
+    perkalian N dari 1 × N hingga 10 × N
+    beserta nilai kuadrat setiap hasilnya.
+  </p>
+
+  <label>Masukkan bilangan N:</label>
+
+  <input
+    type="text"
+    id="nilaiN"
+    placeholder="Contoh: 5"
+  >
+
+  <button onclick="hitungTabel()">
+    Tampilkan Hasil
+  </button>
+
+  <div id="hasil">
+    Hasil akan ditampilkan di sini.
+  </div>
+
+</div>
+
+<footer>
+  Latihan Perulangan JavaScript
+</footer>
+
+<script>
+
+function hitungTabel() {
+
+  const input = document
+    .getElementById("nilaiN")
+    .value.trim();
+
+  const output = document.getElementById("hasil");
+
+  if (input === "") {
+    output.textContent = "Masukkan angka terlebih dahulu!";
+    return;
+  }
+
+  const N = Number(input);
+
+  if (!Number.isSafeInteger(N) || N <= 0) {
+    output.textContent =
+      "Masukkan bilangan bulat positif!";
+    return;
+  }
+
+  let hasil = `
+    <h3>Tabel Perkalian N = ${N}</h3>
+
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Perkalian</th>
+        <th>Hasil</th>
+        <th>Kuadrat</th>
+      </tr>
+  `;
+
+  for (let i = 1; i <= 10; i++) {
+
+    let perkalian = i * N;
+    let kuadrat = perkalian * perkalian;
+
+    hasil += `
+      <tr>
+        <td>${i}</td>
+        <td>${i} × ${N}</td>
+        <td>${perkalian}</td>
+        <td>${kuadrat}</td>
+      </tr>
+    `;
+  }
+
+  hasil += "</table>";
+
+  output.innerHTML = hasil;
+
+}
+
+</script>
+
+</body>
+</html>
