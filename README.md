@@ -1,1 +1,0 @@
-# Perkalian_dan-kudrat
